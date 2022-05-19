@@ -1,7 +1,2 @@
-import Popup from "./popup.svelte"
-import Options from "./options.svelte"
-
-export default {
-  Popup,
-  Options,
-}
+var appTarget = document.getElementById("app")
+new briefkasten.Options({ target: appTarget })
