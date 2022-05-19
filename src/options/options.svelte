@@ -1,6 +1,7 @@
 <script>
-  import { getConfiguration, saveConfiguration } from "./configuration";
-  import { testConnection } from "./briefkasten";
+  import { getConfiguration, saveConfiguration } from "../configuration";
+  import { testConnection } from "../briefkasten";
+  import "../styles/index.css"
 
   let baseUrl = "";
   let token = "";

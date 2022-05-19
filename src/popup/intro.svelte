@@ -1,5 +1,5 @@
 <script>
-  import { openOptions } from "./browser";
+  import { openOptions } from "../browser";
 
   function handleOptions() {
     openOptions()

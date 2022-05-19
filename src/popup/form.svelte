@@ -1,8 +1,8 @@
 <script>
 
   import TagAutocomplete from './TagAutocomplete.svelte'
-  import { getCurrentTabInfo, openOptions } from "./browser";
-  import { getTags, saveBookmark } from "./briefkasten";
+  import { getCurrentTabInfo, openOptions } from "../browser";
+  import { getTags, saveBookmark } from "../briefkasten";
 
   let url = "";
   let title = "";

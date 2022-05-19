@@ -1,5 +1,5 @@
 <script>
-    import {getCurrentWord, getCurrentWordBounds} from "./util";
+    import {getCurrentWord, getCurrentWordBounds} from "../util";
 
     export let id;
     export let name;
