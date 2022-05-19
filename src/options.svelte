@@ -70,13 +70,13 @@
   </div>
 </form>
 <style>
-    .button-row {
-        display: flex;
-        justify-content: flex-end;
-        align-items: baseline;
-    }
-    .button-row button {
-        padding-left: 32px;
-        padding-right: 32px;
-    }
+.button-row {
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+}
+.button-row button {
+    padding-left: 32px;
+    padding-right: 32px;
+}
 </style>
