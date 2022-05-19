@@ -1,6 +1,6 @@
 <script>
   import { getConfiguration, saveConfiguration } from "./configuration";
-  import { testConnection } from "./linkding";
+  import { testConnection } from "./briefkasten";
 
   let baseUrl = "";
   let token = "";
@@ -35,20 +35,20 @@
 </script>
 <h6>Configuration</h6>
 <div class="divider"></div>
-<p>This is a companion extension for the <a href="https://github.com/sissbruecker/linkding">linkding</a> bookmark
+<p>This is a companion extension for the <a href="https://github.com/ndom91/briefkasten">briefkasten</a> bookmark
   service. Before you can start using it you have to configure some basic settings, so that the extension can
-  communicate with your linkding installation.</p>
+  communicate with your briefkasten installation.</p>
 <form class="form" on:submit|preventDefault={handleSubmit}>
   <div class="form-group">
     <label class="form-label" for="input-base-url">Base URL</label>
-    <input class="form-input" type="text" id="input-base-url" placeholder="https://linkding.mydomain.com"
+    <input class="form-input" type="text" id="input-base-url" placeholder="https://briefkasten.mydomain.com"
            bind:value={baseUrl}>
-    <div class="form-input-hint">The base URL of your linkding installation, <b>without</b> the <samp>/bookmark</samp> path or a trailing slash</div>
+    <div class="form-input-hint">The base URL of your briefkasten installation, <b>without</b> the <samp>/bookmark</samp> path or a trailing slash</div>
   </div>
   <div class="form-group">
     <label class="form-label" for="input-token">API Authentication Token</label>
     <input class="form-input" type="password" id="input-token" placeholder="Token" bind:value={token}>
-    <div class="form-input-hint">Used to authenticate against the linkding API. You can find this on your linkding
+    <div class="form-input-hint">Used to authenticate against the briefkasten API. You can find this on your briefkasten
       settings page.
     </div>
   </div>

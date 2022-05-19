@@ -1,5 +1,5 @@
 import { getBrowser } from "./browser";
-import { search } from "./linkding";
+import { search } from "./briefkasten";
 import { getConfiguration, isConfigurationComplete } from "./configuration";
 
 const browser = getBrowser();
@@ -7,8 +7,8 @@ const browser = getBrowser();
 browser.omnibox.onInputStarted.addListener(() => {
   const hasCompleteConfiguration = isConfigurationComplete();
   const description = hasCompleteConfiguration
-    ? "Search bookmarks in linkding"
-    : "⚠️ Please configure the linkding extension first";
+    ? "Search bookmarks in briefkasten"
+    : "⚠️ Please configure the briefkasten extension first";
 
   browser.omnibox.setDefaultSuggestion({ description });
 });

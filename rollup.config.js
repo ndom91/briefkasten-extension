@@ -12,7 +12,7 @@ export default [
 		output: {
 			sourcemap: true,
 			format: 'iife',
-			name: 'linkding',
+			name: 'briefkasten',
 			file: 'build/bundle.js'
 		},
 		plugins: [
