@@ -69,10 +69,10 @@
     "pre-commit": "npx lint-staged"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,css,json}": [
+    "*.{cjs,js,svelte,css,json}": [
       "prettier --write"
     ],
-    "*.js": [
+    "*.{cjs,js}": [
       "eslint --fix"
     ]
   }
