@@ -4,16 +4,18 @@ import { getConfiguration, isConfigurationComplete } from "../configuration"
 
 const browser = getBrowser()
 
-browser.omnibox.onInputStarted.addListener(() => {
+console.log(browser)
+
+chrome.omnibox.onInputStarted.addListener(() => {
   const hasCompleteConfiguration = isConfigurationComplete()
   const description = hasCompleteConfiguration
     ? "Search bookmarks in briefkasten"
     : "⚠️ Please configure the briefkasten extension first"
 
-  browser.omnibox.setDefaultSuggestion({ description })
+  chrome.omnibox.setDefaultSuggestion({ description })
 })
 
-browser.omnibox.onInputChanged.addListener((text, suggest) => {
+chrome.omnibox.onInputChanged.addListener((text, suggest) => {
   search(text, { limit: 5 })
     .then((results) => {
       const bookmarkSuggestions = results.map((bookmark) => ({
@@ -27,7 +29,7 @@ browser.omnibox.onInputChanged.addListener((text, suggest) => {
     })
 })
 
-browser.omnibox.onInputEntered.addListener((content, disposition) => {
+chrome.omnibox.onInputEntered.addListener((content, disposition) => {
   if (!content) return
 
   const configuration = getConfiguration()

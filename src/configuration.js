@@ -1,8 +1,8 @@
-const CONFIG_KEY = 'ld_ext_config'
+const CONFIG_KEY = "bk_ext_config"
 
 export function getConfiguration() {
   const configJson = localStorage.getItem(CONFIG_KEY)
-  const config = configJson ? JSON.parse(configJson) : {baseUrl: '', token: ''}
+  const config = configJson ? JSON.parse(configJson) : { baseUrl: "", token: "" }
   return config
 }
 

@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "name": "briefkasten extension",
+  "version": "0.1",
+  "description": "Companion extension for the briefkasten bookmark service",
+  "homepage_url": "https://github.com/ndom91/briefkasten-extension/",
+
+  "icons": {
+    "16": "src/icons/button_19x19.png",
+    "48": "src/icons/logo_48x48.png",
+    "96": "src/icons/logo_96x96.png",
+    "128": "src/icons/logo_128x128.png"
+  },
+
+  "background": {
+    "service_worker": "src/background/index.js"
+  },
+
+  "omnibox": {
+    "keyword": "bk"
+  },
+
+  "action": {
+    "default_icon": {
+      "16": "src/icons/button_19x19.png",
+      "19": "src/icons/button_19x19.png",
+      "32": "src/icons/button_32x32.png",
+      "38": "src/icons/button_38x38.png"
+    },
+    "default_title": "Add bookmark (Alt+Shift+L)",
+    "default_popup": "src/popup/index.html"
+  },
+
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Alt+Shift+L"
+      },
+      "description": "Open a popup to bookmark current page."
+    }
+  },
+
+  "options_ui": {
+    "page": "src/options/index.html"
+  },
+
+  "permissions": ["tabs"],
+  "host_permissions": ["http://*/*", "https://*/*"]
+}

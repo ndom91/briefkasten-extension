@@ -1,7 +1,6 @@
 <script>
   import { getConfiguration, saveConfiguration } from "../configuration";
   import { testConnection } from "../briefkasten";
-  import "../styles/index.css"
 
   let baseUrl = "";
   let token = "";
@@ -34,50 +33,45 @@
     }
   }
 </script>
-<h6>Configuration</h6>
-<div class="divider"></div>
-<p>This is a companion extension for the <a href="https://github.com/ndom91/briefkasten">briefkasten</a> bookmark
-  service. Before you can start using it you have to configure some basic settings, so that the extension can
-  communicate with your briefkasten installation.</p>
-<form class="form" on:submit|preventDefault={handleSubmit}>
-  <div class="form-group">
-    <label class="form-label" for="input-base-url">Base URL</label>
-    <input class="form-input" type="text" id="input-base-url" placeholder="https://briefkasten.mydomain.com"
-           bind:value={baseUrl}>
-    <div class="form-input-hint">The base URL of your briefkasten installation, <b>without</b> the <samp>/bookmark</samp> path or a trailing slash</div>
-  </div>
-  <div class="form-group">
-    <label class="form-label" for="input-token">API Authentication Token</label>
-    <input class="form-input" type="password" id="input-token" placeholder="Token" bind:value={token}>
-    <div class="form-input-hint">Used to authenticate against the briefkasten API. You can find this on your briefkasten
-      settings page.
+
+<main class="text-base space-y-2">
+  <h2 class="text-xl uppercase font-semibold">Configuration</h2>
+  <p>This is a companion extension for the <a class="text-slate-700 font-semibold" href="https://github.com/ndom91/briefkasten">briefkasten</a> bookmark
+    service. Before you can start using it you have to configure some basic settings, so that the extension can
+    communicate with your briefkasten installation.</p>
+  <div class="divide-y"></div>
+  <form class="flex flex-col" on:submit|preventDefault={handleSubmit}>
+    <div class="flex flex-col mt-2">
+      <label class="uppercase tracking-tight font-semibold" for="input-base-url">Base URL</label>
+      <input class="border-2 border-slate-300 p-2 rounded-md focus:outline-none outline-none focus:ring-2 focus:ring-slate-300" type="text" id="input-base-url" placeholder="https://briefkasten.mydomain.com" bind:value={baseUrl}>
     </div>
-  </div>
-  <div class="divider"></div>
-  <div class="button-row">
-    {#if isSuccess}
-      <div class="form-group has-success mr-2">
-        <span class="form-input-hint"><i class="icon icon-check"></i> Connection successful</span>
-      </div>
-    {/if}
-    {#if isError}
-      <div class="form-group has-error mr-2">
-        <span class="form-input-hint"><i class="icon icon-cross"></i> Connection failed</span>
-      </div>
-    {/if}
-    <button type="submit" class="btn btn-primary ml-2" disabled={!(baseUrl && token)}>
-      Save
-    </button>
-  </div>
-</form>
-<style>
-.button-row {
-    display: flex;
-    justify-content: flex-end;
-    align-items: baseline;
-}
-.button-row button {
-    padding-left: 32px;
-    padding-right: 32px;
-}
-</style>
+    <div class="text-xs mt-1">The base URL of your briefkasten installation, <b>without</b> the <samp>/bookmark</samp> path or a trailing slash</div>
+    <div class="flex flex-col mt-2">
+      <label class="uppercase tracking-tight font-semibold" for="input-token">API Authentication Token</label>
+      <input class="border-2 border-slate-300 p-2 rounded-md focus:outline-none outline-none focus:ring-2 focus:ring-slate-300" type="password" id="input-token" placeholder="Token" bind:value={token}>
+    </div>
+    <div class="text-xs mt-1">Used to authenticate against the briefkasten API. You can find this on your briefkasten settings page. </div>
+    <div class="divide-y"></div>
+    <div class="flex mt-4">
+      <button type="submit" class="rounded-md focus:ring-2 focus:ring-slate-400 focus:bg-slate-900 outline-none focus:outline-none hover:cursor-pointer px-4 py-2 text-white bg-slate-700 hover:bg-slate-900 disabled:hover:bg-slate-700 mr-2" disabled={!(baseUrl && token)}>
+        Save
+      </button>
+      {#if isSuccess}
+        <div class="flex ml-2">
+          <span class="text-slate-500">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" /></svg>
+            Connection successful
+          </span>
+        </div>
+      {/if}
+      {#if isError}
+        <div class="flex ml-2">
+          <span class="text-slate-400">
+            <svg class="w-6 h-6" name="cross" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+            Connection failed
+          </span>
+        </div>
+      {/if}
+    </div>
+  </form>
+</main>

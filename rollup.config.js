@@ -10,7 +10,7 @@ import { emptyDir } from "rollup-plugin-empty-dir"
 const production = !process.env.ROLLUP_WATCH
 
 export default {
-  input: "src/manifest.json",
+  input: "manifest.json",
   // output: {
   //   dir: "dist",
   //   format: "esm",

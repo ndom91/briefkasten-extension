@@ -1,5 +1,8 @@
 import Popup from "./popup.svelte"
+import "../styles/index.css"
 
-export default {
-  Popup,
-}
+const app = new Popup({
+  target: document.getElementById("app"),
+})
+
+export default app
