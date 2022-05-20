@@ -1,68 +1,67 @@
-import { getConfiguration } from "./configuration";
+import { getConfiguration } from "./configuration"
 
 export async function saveBookmark(bookmark) {
-  const configuration = getConfiguration();
+  const configuration = getConfiguration()
 
-  return fetch(`${configuration.baseUrl}/api/bookmarks/`, {
+  const res = await fetch(`${configuration.baseUrl}/api/bookmarks/new`, {
     method: "POST",
     headers: {
-      "Authorization": `Token ${configuration.token}`,
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(bookmark)
-  }).then(response => {
-    if (response.status === 201) {
-      return response.json();
-    } else if (response.status === 400) {
-      return response.json().then(body => Promise.reject(`Validation error: ${JSON.stringify(body)}`));
-    } else {
-      return Promise.reject(`Request error: ${response.statusText}`);
-    }
-  });
+    body: JSON.stringify({ ...bookmark, userId: configuration.token }),
+  })
+  if (res.status === 200) {
+    const body = await res.json()
+    return body
+  } else if (res.status === 400) {
+    const body = await res.json()
+    throw new Error(`Validation error: ${JSON.stringify(body)}`)
+  } else {
+    throw new Error(`Request error: ${res.statusText}`)
+  }
 }
 
 export async function getTags() {
-  const configuration = getConfiguration();
+  const configuration = getConfiguration()
 
-  return fetch(`${configuration.baseUrl}/api/tags/?limit=1000`, {
+  const res = await fetch(`${configuration.baseUrl}/api/tags/?limit=1000`, {
     headers: {
-      "Authorization": `Token ${configuration.token}`
-    }
+      Authorization: `Token ${configuration.token}`,
+    },
   })
-    .then(response => {
-      if (response.status === 200) {
-        return response.json().then(body => body.results);
-      }
-      return Promise.reject(`Error loading tags: ${response.statusText}`);
-    });
+  if (res.status === 200) {
+    const body = await res.json()
+    return body.results
+  } else {
+    throw new Error("Error loading tags")
+  }
 }
 
 export async function search(text, options) {
-  const configuration = getConfiguration();
-  const q = encodeURIComponent(text);
-  const limit = options.limit || 100;
+  const configuration = getConfiguration()
+  const q = encodeURIComponent(text)
+  const limit = options.limit || 100
 
-  return fetch(`${configuration.baseUrl}/api/bookmarks/?q=${q}&limit=${limit}`, {
+  const res = await fetch(`${configuration.baseUrl}/api/bookmarks/?q=${q}&limit=${limit}`, {
     headers: {
-      "Authorization": `Token ${configuration.token}`
-    }
+      Authorization: `Token ${configuration.token}`,
+    },
   })
-    .then(response => {
-      if (response.status === 200) {
-        return response.json().then(body => body.results);
-      }
-      return Promise.reject(`Error searching bookmarks: ${response.statusText}`);
-    });
+  if (res.status === 200) {
+    const body = await res.json()
+    return body.results
+  }
+  return `Error searching bookmarks: ${res.statusText}`
 }
 
-
 export async function testConnection(configuration) {
-  return fetch(`${configuration.baseUrl}/api/bookmarks/?limit=1`, {
+  const res = await fetch(`${configuration.baseUrl}/api/bookmarks/?limit=1`, {
     headers: {
-      "Authorization": `Token ${configuration.token}`
-    }
+      Authorization: `Token ${configuration.token}`,
+    },
   })
-    .then(response => response.status === 200 ? response.json() : Promise.reject(response))
-    .then(body => !!body.results)
-    .catch(() => false);
+  if (res.status === 200) {
+    const body = await res.json()
+    return body
+  }
 }
