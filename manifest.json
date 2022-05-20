@@ -6,10 +6,10 @@
   "homepage_url": "https://github.com/ndom91/briefkasten-extension/",
 
   "icons": {
-    "16": "src/icons/button_19x19.png",
-    "48": "src/icons/logo_48x48.png",
-    "96": "src/icons/logo_96x96.png",
-    "128": "src/icons/logo_128x128.png"
+    "16": "src/icons/logo-16x16.png",
+    "48": "src/icons/logo-48x48.png",
+    "96": "src/icons/logo-96x96.png",
+    "128": "src/icons/logo-128x128.png"
   },
 
   "background": {
@@ -22,10 +22,10 @@
 
   "action": {
     "default_icon": {
-      "16": "src/icons/button_19x19.png",
-      "19": "src/icons/button_19x19.png",
-      "32": "src/icons/button_32x32.png",
-      "38": "src/icons/button_38x38.png"
+      "16": "src/icons/logo-16x16.png",
+      "19": "src/icons/logo-19x19.png",
+      "32": "src/icons/logo-32x32.png",
+      "38": "src/icons/logo-38x38.png"
     },
     "default_title": "Add bookmark (Alt+Shift+L)",
     "default_popup": "src/popup/index.html"
