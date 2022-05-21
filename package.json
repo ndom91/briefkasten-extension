@@ -68,6 +68,7 @@
   "prettier": {
     "semi": false,
     "printWidth": 100,
+    "singleQuote": true,
     "bracketSpacing": true
   },
   "simple-git-hooks": {

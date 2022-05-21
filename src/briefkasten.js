@@ -1,12 +1,12 @@
-import { getConfiguration } from "./configuration"
+import { getConfiguration } from './configuration'
 
 export async function saveBookmark(bookmark) {
   const configuration = getConfiguration()
 
-  const res = await fetch(`${configuration.baseUrl}/api/bookmarks/new`, {
-    method: "POST",
+  const res = await fetch(`${configuration.baseUrl}/api/bookmarks`, {
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({ ...bookmark, userId: configuration.token }),
   })
@@ -33,7 +33,7 @@ export async function getTags() {
     const body = await res.json()
     return body.results
   } else {
-    throw new Error("Error loading tags")
+    throw new Error('Error loading tags')
   }
 }
 
