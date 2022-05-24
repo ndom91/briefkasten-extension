@@ -22,29 +22,29 @@ export async function saveBookmark(bookmark) {
 }
 
 export async function getTags() {
-  const configuration = getConfiguration()
+  const configuration = await getConfiguration()
 
   const res = await fetch(`${configuration.baseUrl}/api/tags/?limit=1000`, {
     headers: {
-      Authorization: `Token ${configuration.token}`,
+      Authorization: `${configuration.token}`,
     },
   })
   if (res.status === 200) {
     const body = await res.json()
-    return body.results
+    return body.tags
   } else {
     throw new Error('Error loading tags')
   }
 }
 
 export async function search(text, options) {
-  const configuration = getConfiguration()
+  const configuration = await getConfiguration()
   const q = encodeURIComponent(text)
   const limit = options.limit || 100
 
   const res = await fetch(`${configuration.baseUrl}/api/bookmarks/?q=${q}&limit=${limit}`, {
     headers: {
-      Authorization: `Token ${configuration.token}`,
+      Authorization: `${configuration.token}`,
     },
   })
   if (res.status === 200) {

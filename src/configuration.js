@@ -1,14 +1,12 @@
-const CONFIG_KEY = "bk_ext_config"
+const CONFIG_KEY = 'bk_ext_config'
 
-export function getConfiguration() {
-  const configJson = localStorage.getItem(CONFIG_KEY)
-  const config = configJson ? JSON.parse(configJson) : { baseUrl: "", token: "" }
-  return config
+export async function getConfiguration() {
+  const config = await chrome.storage.local.get([CONFIG_KEY])
+  return config[CONFIG_KEY]
 }
 
 export function saveConfiguration(config) {
-  const configJson = JSON.stringify(config)
-  localStorage.setItem(CONFIG_KEY, configJson)
+  chrome.storage.local.set({ [CONFIG_KEY]: config })
 }
 
 export function isConfigurationComplete() {

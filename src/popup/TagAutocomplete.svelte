@@ -27,7 +27,7 @@
 
         const word = getCurrentWord(input);
 
-        suggestions = word ? tags.filter(tag => tag.indexOf(word) === 0) : [];
+        suggestions = word ? tags.filter(tag => tag.name.indexOf(word) === 0) : [];
 
         if (word && suggestions.length > 0) {
             open();
@@ -70,7 +70,7 @@
     function complete(suggestion) {
         const bounds = getCurrentWordBounds(input);
         const inputValue = input.value;
-        value = inputValue.substring(0, bounds.start) + suggestion + inputValue.substring(bounds.end);
+        value = `${inputValue.substring(0, bounds.start)}${suggestion.name}${inputValue.substring(bounds.end)} `;
 
         close();
     }
@@ -89,7 +89,7 @@
 
 <div class="w-full">
     <!-- autocomplete input container -->
-    <div class="form-autocomplete-input form-input" class:is-focused={isFocus}>
+    <div class:is-focused={isFocus}>
         <!-- autocomplete real input box -->
         <input id="{id}" name="{name}" autofocus
                class="w-full border-2 border-slate-300 p-1 rounded-md focus:outline-none outline-none focus:ring-2 focus:ring-slate-300" type="text" autocomplete="off"
@@ -99,37 +99,15 @@
     </div>
 
     <!-- autocomplete suggestion list -->
-    <ul class="menu" class:open={isOpen && suggestions.length > 0}>
+    <ul class="mt-2 flex flex-wrap space-x-2" class:open={isOpen && suggestions.length > 0}>
         <!-- menu list items -->
         {#each suggestions as tag,i}
-            <li class="menu-item" class:selected={selectedIndex === i}>
+            <li class="text-sm rounded-md px-2 py-1 bg-slate-300 text-slate-800 flex justify-center items-center" class:selected={selectedIndex === i}>
                 <a href="#" on:mousedown|preventDefault={() => complete(tag)}>
-                    <div class="tile tile-centered">
-                        <div class="tile-content">
-                            {tag}
-                        </div>
-                    </div>
+                    {tag.emoji ? tag.emoji : ''} {tag.name}
                 </a>
             </li>
         {/each}
     </ul>
 </div>
 
-<style>
-    .menu {
-        display: none;
-        max-height: 200px;
-        overflow: auto;
-        font-size: .7rem;
-    }
-
-    .menu.open {
-        display: block;
-    }
-
-    /* TODO: Should be read from theme */
-    .menu-item.selected > a {
-        background: #f1f1fc;
-        color: #5755d9;
-    }
-</style>

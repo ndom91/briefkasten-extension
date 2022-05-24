@@ -1,6 +1,6 @@
-import { getBrowser } from "../browser"
-import { search } from "../briefkasten"
-import { getConfiguration, isConfigurationComplete } from "../configuration"
+import { getBrowser } from './src/browser'
+import { search } from './src/briefkasten'
+import { getConfiguration, isConfigurationComplete } from './src/configuration'
 
 const browser = getBrowser()
 
@@ -9,18 +9,18 @@ console.log(browser)
 chrome.omnibox.onInputStarted.addListener(() => {
   const hasCompleteConfiguration = isConfigurationComplete()
   const description = hasCompleteConfiguration
-    ? "Search bookmarks in briefkasten"
-    : "⚠️ Please configure the briefkasten extension first"
+    ? 'Search bookmarks in briefkasten'
+    : '⚠️ Please configure the briefkasten extension first'
 
-  chrome.omnibox.setDefaultSuggestion({ description })
+  chrome.omnibox.setDefaultSuggestion(description)
 })
 
 chrome.omnibox.onInputChanged.addListener((text, suggest) => {
-  search(text, { limit: 5 })
+  search(text, { limit: 20 })
     .then((results) => {
       const bookmarkSuggestions = results.map((bookmark) => ({
         content: bookmark.url,
-        description: bookmark.title || bookmark.website_title || bookmark.url,
+        description: `<dim>${bookmark.title}</dim>`, // <dim>${bookmark.desc}</dim> <url>${bookmark.url}</url>`,
       }))
       suggest(bookmarkSuggestions)
     })
@@ -39,13 +39,13 @@ chrome.omnibox.onInputEntered.addListener((content, disposition) => {
     : `${configuration.baseUrl}/bookmarks?q=${encodeURIComponent(content)}`
 
   switch (disposition) {
-    case "currentTab":
+    case 'currentTab':
       browser.tabs.update({ url })
       break
-    case "newForegroundTab":
+    case 'newForegroundTab':
       browser.tabs.create({ url })
       break
-    case "newBackgroundTab":
+    case 'newBackgroundTab':
       browser.tabs.create({ url, active: false })
       break
   }

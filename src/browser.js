@@ -1,5 +1,5 @@
 function isChrome() {
-  return typeof chrome !== "undefined"
+  return typeof chrome !== 'undefined'
 }
 
 export function getBrowser() {
@@ -21,7 +21,7 @@ export async function getCurrentTabInfo() {
   // const tab = tabs && tabs[0];
 
   const tabs = await browser.tabs.query({ active: true, currentWindow: true })
-  if (!Array.isArray(tabs)) return { url: "", title: "" }
+  if (!Array.isArray(tabs)) return { url: '', title: '' }
 
   return {
     url: tabs[0].url,

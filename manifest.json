@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "briefkasten extension",
-  "version": "0.1",
-  "description": "Companion extension for the briefkasten bookmark service",
+  "name": "Briefkasten Bookmarks",
+  "version": "0.3",
+  "description": "Companion extension for the Briefkasten bookmark app.",
   "homepage_url": "https://github.com/ndom91/briefkasten-extension/",
 
   "icons": {
@@ -13,7 +13,8 @@
   },
 
   "background": {
-    "service_worker": "src/background/index.js"
+    "service_worker": "background.js",
+    "type": "module"
   },
 
   "omnibox": {
@@ -44,6 +45,6 @@
     "page": "src/options/index.html"
   },
 
-  "permissions": ["tabs"],
+  "permissions": ["tabs", "storage", "background"],
   "host_permissions": ["http://*/*", "https://*/*"]
 }
