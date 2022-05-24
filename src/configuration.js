@@ -9,8 +9,8 @@ export function saveConfiguration(config) {
   chrome.storage.local.set({ [CONFIG_KEY]: config })
 }
 
-export function isConfigurationComplete() {
-  const config = getConfiguration()
+export async function isConfigurationComplete() {
+  const config = await getConfiguration()
 
   return config.baseUrl && config.token
 }

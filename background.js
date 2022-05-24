@@ -4,15 +4,11 @@ import { getConfiguration, isConfigurationComplete } from './src/configuration'
 
 const browser = getBrowser()
 
-console.log(browser)
-
-chrome.omnibox.onInputStarted.addListener(() => {
-  const hasCompleteConfiguration = isConfigurationComplete()
-  const description = hasCompleteConfiguration
-    ? 'Search bookmarks in briefkasten'
-    : '⚠️ Please configure the briefkasten extension first'
-
-  chrome.omnibox.setDefaultSuggestion(description)
+const hasCompleteConfiguration = isConfigurationComplete()
+chrome.omnibox.setDefaultSuggestion({
+  description: hasCompleteConfiguration
+    ? 'Bookmark search:'
+    : '⚠️ Please configure the briefkasten extension first',
 })
 
 chrome.omnibox.onInputChanged.addListener((text, suggest) => {
@@ -20,7 +16,20 @@ chrome.omnibox.onInputChanged.addListener((text, suggest) => {
     .then((results) => {
       const bookmarkSuggestions = results.map((bookmark) => ({
         content: bookmark.url,
-        description: `<dim>${bookmark.title}</dim>`, // <dim>${bookmark.desc}</dim> <url>${bookmark.url}</url>`,
+        description: `${bookmark.title} ${bookmark.desc} (${bookmark.url})`,
+        descriptionStyles: [
+          { offset: 0, type: 'match', length: bookmark.title.length },
+          {
+            offset: bookmark.title.length,
+            type: 'dim',
+            length: bookmark.desc.length + 1,
+          },
+          {
+            offset: bookmark.title.length + bookmark.desc.length + 2,
+            type: 'url',
+            length: bookmark.url.length + 2,
+          },
+        ],
       }))
       suggest(bookmarkSuggestions)
     })
@@ -29,10 +38,10 @@ chrome.omnibox.onInputChanged.addListener((text, suggest) => {
     })
 })
 
-chrome.omnibox.onInputEntered.addListener((content, disposition) => {
+chrome.omnibox.onInputEntered.addListener(async (content, disposition) => {
   if (!content) return
 
-  const configuration = getConfiguration()
+  const configuration = await getConfiguration()
   const isUrl = /^http(s)?:\/\//.test(content)
   const url = isUrl
     ? content
