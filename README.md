@@ -13,7 +13,7 @@ Works with: Firefox, Chrome
 
 **Screenshot**
 
-![Screenshot](/docs/screenshot.png?raw=true 'Screenshot')
+![Screenshot](/docs/screenshot_extension.png?raw=true 'Screenshot')
 
 ## Installation
 
