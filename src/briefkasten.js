@@ -1,7 +1,7 @@
 import { getConfiguration } from './configuration'
 
 export async function saveBookmark(bookmark) {
-  const configuration = getConfiguration()
+  const configuration = await getConfiguration()
 
   const res = await fetch(`${configuration.baseUrl}/api/bookmarks`, {
     method: 'POST',

@@ -7,8 +7,8 @@
   let isSuccess = false;
   let isError = false;
 
-  function init() {
-    const config = getConfiguration();
+  async function init() {
+    const config = await getConfiguration();
     baseUrl = config.baseUrl;
     token = config.token;
   }
