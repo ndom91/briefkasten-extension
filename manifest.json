@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Briefkasten Bookmarks",
-  "version": "0.3",
+  "version": "0.4",
   "description": "Companion extension for the Briefkasten bookmark app.",
   "homepage_url": "https://github.com/ndom91/briefkasten-extension/",
 
@@ -45,6 +45,6 @@
     "page": "src/options/index.html"
   },
 
-  "permissions": ["tabs", "storage", "background"],
+  "permissions": ["storage", "background"],
   "host_permissions": ["http://*/*", "https://*/*"]
 }

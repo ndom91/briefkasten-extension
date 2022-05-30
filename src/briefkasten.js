@@ -57,7 +57,7 @@ export async function search(text, options) {
 export async function testConnection(configuration) {
   const res = await fetch(`${configuration.baseUrl}/api/bookmarks/?limit=1`, {
     headers: {
-      Authorization: `Token ${configuration.token}`,
+      Authorization: `${configuration.token}`,
     },
   })
   if (res.status === 200) {
