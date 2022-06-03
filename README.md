@@ -1,5 +1,10 @@
 # 📌 Briefkasten Extension
 
+![Chrome Web Store](https://img.shields.io/chrome-web-store/rating/aighkhofochfjejmhjfkgjfpkpgmjlnd?style=flat-square)
+![GitHub](https://img.shields.io/github/license/ndom91/briefkasten-extension?style=flat-square)
+![GitHub issues](https://img.shields.io/github/issues/ndom91/briefkasten-extension?style=flat-square)
+[![Demo](https://img.shields.io/badge/demo-instance-green?style=flat-square)](https://briefkasten.vercel.app)
+
 > Forked from [`sissbruecker/linkding-extension`](https://github.com/sissbruecker/linkding-extension)
 
 Companion extension for your self-hosted [Briefkasten](https://github.com/ndom91/briefkasten) instance!
@@ -15,23 +20,26 @@ Works with: **Firefox**, **Chrome**
 
 ## ✨ Installation
 
+- Chrome: [Chrome Web Store](https://chrome.google.com/webstore/detail/briefkasten-bookmarks/aighkhofochfjejmhjfkgjfpkpgmjlnd)
 - ~Firefox: [Mozilla Addon Store](https://addons.mozilla.org/de/firefox/addon/briefkasten-extension/)~ (Coming Soon)
-- ~Chrome: [Chrome Web Store](https://chrome.google.com/webstore/detail/briefkasten-extension/beakmhbijpdhipnjhnclmhgjlddhidpe)~ (Coming Soon)
 
 ## 🧰 Manual Installation
 
 1. Clone repository
+
 ```bash
 $ git clone https://github.com/ndom91/briefkasten-extension
 $ cd briefkasten-extension
 ```
 
 2. Install all dependencies
+
 ```sh
 $ npm install
 ```
 
 3. Build the source code into `/dist` dir
+
 ```sh
 $ npm run build
 ```
