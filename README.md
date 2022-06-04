@@ -21,7 +21,7 @@ Works with: **Firefox**, **Chrome**
 ## ✨ Installation
 
 - Chrome: [Chrome Web Store](https://chrome.google.com/webstore/detail/briefkasten-bookmarks/aighkhofochfjejmhjfkgjfpkpgmjlnd)
-- ~Firefox: [Mozilla Addon Store](https://addons.mozilla.org/de/firefox/addon/briefkasten-extension/)~ (Coming Soon)
+- ~Firefox: [Mozilla Addon Store](https://addons.mozilla.org/de/firefox/addon/briefkasten-extension/)~ (Waiting on Firefox [`manifest v3`](https://blog.mozilla.org/addons/2022/05/18/manifest-v3-in-firefox-recap-next-steps/) support)
 
 ## 🧰 Manual Installation
 
