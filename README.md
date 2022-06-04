@@ -16,7 +16,7 @@ Companion extension for your self-hosted [Briefkasten](https://github.com/ndom91
 
 Works with: **Firefox**, **Chrome**
 
-![Screenshot](/docs/screenshot_extension.png?raw=true 'Screenshot')
+![Screenshot](/docs/screenshot.png)
 
 ## ✨ Installation
 
