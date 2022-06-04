@@ -14,7 +14,7 @@ Companion extension for your self-hosted [Briefkasten](https://github.com/ndom91
 - ~Quickly add a bookmark for the current tab (keyboard shortcut: <kbd>Alt</kbd><kbd>Shift</kbd><kbd>L</kbd>)~
 - Search bookmarks through the Omnibox / address bar (keyword: <kbd>bk</kbd>)
 
-Works with: **Firefox**, **Chrome**
+Works with: **Firefox (101+)**, **Chrome**
 
 ![Screenshot](/docs/screenshot.png)
 
