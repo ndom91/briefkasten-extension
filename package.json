@@ -1,11 +1,11 @@
 {
   "name": "briefkasten-extension",
-  "version": "0.1.0",
+  "version": "0.5.0",
   "description": "Companion extension for the briefkasten bookmark service",
   "license": "MIT",
-  "author": "Sascha Ißbrücker",
+  "author": "ndom91 <yo@ndo.dev>",
   "contributors": [
-    "ndom91 <yo@ndo.dev>"
+    "Sascha Ißbrücker"
   ],
   "type": "module",
   "repository": {
