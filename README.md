@@ -11,10 +11,10 @@ Companion extension for your self-hosted [Briefkasten](https://github.com/ndom91
 
 ### Features
 
-- ~Quickly add a bookmark for the current tab (keyboard shortcut: <kbd>Alt</kbd><kbd>Shift</kbd><kbd>L</kbd>)~
+- Quickly add a bookmark for the current tab (keyboard shortcut: <kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>K</kbd>)
 - Search bookmarks through the Omnibox / address bar (keyword: <kbd>bk</kbd>)
 
-Works with: **Firefox (101+)**, **Chrome**
+Works with: **Chrome** (and all Chromium based browsers), **Firefox (101+)**
 
 ![Screenshot](/docs/screenshot.png)
 
@@ -47,6 +47,13 @@ After the build is complete, the repository directory will contain the unpackage
 
 - [Firefox - WebExtensions](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension#installing)
 - [Chrome - Extensions Getting Started](https://developer.chrome.com/docs/extensions/mv3/getstarted/#manifest)
+
+## 🛼 Setup
+
+After installing the extension for the first time, you will be greeted with the options pop-up asking you to enter the _Base Url_ and an _API Token_.
+
+1. The Base URL will be `https://briefkasten.vercel.app` if using the demo version of the application. Otherwise, use your own domain.
+2. The API Token can be found at the top of the [Settings](https://briefkasten.vercel.app/settings) page after logging in.
 
 ## 📝 License
 

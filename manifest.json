@@ -33,9 +33,11 @@
   },
 
   "commands": {
-    "_execute_browser_action": {
+    "_execute_action": {
       "suggested_key": {
-        "default": "Alt+Shift+L"
+        "default": "Ctrl+Shift+K",
+        "windows": "Ctrl+Shift+K",
+        "linux": "Ctrl+Shift+K"
       },
       "description": "Open a popup to bookmark current page."
     }
