@@ -13,6 +13,9 @@ export async function saveBookmark(bookmark) {
   if (res.status === 200) {
     const body = await res.json()
     return body
+    // Unnecessary for now as API does an upsert and will just update existing entry
+    // } else if (res.status === 409) {
+    //   throw new Error('Bookmark already exists')
   } else if (res.status === 400) {
     const body = await res.json()
     throw new Error(`Validation error: ${JSON.stringify(body)}`)
