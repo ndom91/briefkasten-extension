@@ -1,4 +1,4 @@
-import { getBrowser } from './src/browser'
+import { getBrowser, openOptions } from './src/browser'
 import { search } from './src/briefkasten'
 import { getConfiguration, isConfigurationComplete } from './src/configuration'
 
@@ -9,6 +9,13 @@ chrome.omnibox.setDefaultSuggestion({
   description: hasCompleteConfiguration
     ? 'Bookmark search:'
     : '⚠️ Please configure the briefkasten extension first',
+})
+
+chrome.runtime.onInstalled.addListener(function ({ reason }) {
+  // See https://developer.chrome.com/extensions/runtime#event-onInstalled
+  if (reason === chrome.runtime.OnInstalledReason.INSTALL) {
+    openOptions()
+  }
 })
 
 chrome.omnibox.onInputChanged.addListener((text, suggest) => {

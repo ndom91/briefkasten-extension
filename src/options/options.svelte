@@ -6,6 +6,7 @@
   let token = "";
   let isSuccess = false;
   let isError = false;
+  let isLoading = false;
 
   async function init() {
     const config = await getConfiguration();
@@ -20,6 +21,7 @@
       baseUrl,
       token
     };
+    isLoading = true
 
     const testResult = await testConnection(config);
 
@@ -31,6 +33,7 @@
       isSuccess = false;
       isError = true;
     }
+    isLoading = false
   }
 </script>
 
@@ -54,7 +57,33 @@
     <div class="divide-y"></div>
     <div class="flex mt-4">
       <button type="submit" class="rounded-md focus:ring-2 focus:ring-slate-400 focus:bg-slate-900 outline-none focus:outline-none hover:cursor-pointer px-4 py-2 text-white bg-slate-700 hover:bg-slate-900 disabled:hover:bg-slate-700 mr-2" disabled={!(baseUrl && token)}>
-        Save
+          {#if isLoading}
+            <div class="flex items-center justify-center">
+              <svg
+                class="h-5 w-5 animate-spin text-white mr-2"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  class="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="4"
+                ></circle>
+                <path
+                  class="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
+              </svg>
+              <span>Save</span>
+            </div>
+          {:else}
+            Save
+          {/if}
       </button>
       {#if isSuccess}
         <div class="flex ml-2">

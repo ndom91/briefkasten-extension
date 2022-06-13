@@ -5,7 +5,7 @@
 
   let url = ""
   let title = ""
-  let titlePlaceholder = ""
+  let titlePlaceholder = "Leave empty to use auto detected title"
   let desc = ""
   let tags = ""
   let saveState = ""
@@ -74,7 +74,7 @@
   <form class="flex flex-col gap-2 w-full " on:submit|preventDefault={handleSubmit}>
     <div class="flex flex-col justify-start items-start">
       <label class="text-md uppercase tracking-tight font-semibold" for="input-url">URL</label>
-      <input class="w-full border-2 border-slate-300 p-1 rounded-md focus:outline-none outline-none focus:ring-2 focus:ring-slate-300" type="text" id="input-url" placeholder="URL"
+      <input class="w-full border-2 border-slate-300 p-1 rounded-md focus:outline-none outline-none focus:ring-2 focus:ring-slate-300" type="text" id="input-url" placeholder="https://"
              bind:value={url}>
     </div>
     <div class="flex flex-col justify-start items-start">

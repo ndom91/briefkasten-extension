@@ -21,10 +21,25 @@ export async function saveBookmark(bookmark) {
   }
 }
 
+export async function checkUrl(url) {
+  const configuration = await getConfiguration()
+
+  const res = await fetch(`${configuration.baseUrl}/api/bookmarks?q=${url}`)
+  if (res.status === 200) {
+    const body = await res.json()
+    return body.results
+  } else if (res.status === 400) {
+    const body = await res.json()
+    throw new Error(`Validation error: ${JSON.stringify(body)}`)
+  } else {
+    throw new Error(`Request error: ${res.statusText}`)
+  }
+}
+
 export async function getTags() {
   const configuration = await getConfiguration()
 
-  const res = await fetch(`${configuration.baseUrl}/api/tags/?limit=1000`, {
+  const res = await fetch(`${configuration.baseUrl}/api/tags/?limit=10`, {
     headers: {
       Authorization: `${configuration.token}`,
     },

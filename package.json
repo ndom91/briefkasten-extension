@@ -1,6 +1,6 @@
 {
   "name": "briefkasten-extension",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Companion extension for the briefkasten bookmark service",
   "license": "MIT",
   "author": "Sascha Ißbrücker",
