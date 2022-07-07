@@ -18,3 +18,12 @@ export function getCurrentWord(input) {
 
   return input.value.substring(bounds.start, bounds.end)
 }
+export const debounce = (callback, wait) => {
+  let timeoutId = null
+  return (...args) => {
+    clearTimeout(timeoutId)
+    timeoutId = setTimeout(() => {
+      callback.apply(null, args)
+    }, wait)
+  }
+}

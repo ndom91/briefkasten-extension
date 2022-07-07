@@ -23,12 +23,15 @@
   init();
 
   async function handleSubmit() {
-    const tagNames = tags.split(" ").map(tag => tag.trim()).filter(Boolean)
+    const tagNames = tags.includes(',') 
+      ? tags.split(",").map(tag => tag.trim()).filter(Boolean)
+      : tags.split(" ").map(tag => tag.trim()).filter(Boolean)
+
     const bookmark = {
       url,
       title,
       desc,
-      tags: tagNames,
+      tags: tagNames
     }
 
     try {
@@ -104,7 +107,7 @@
       <div class="form-group has-error flex justify-center mt-2">
         <span class="text-slate-500 flex justify-start items-center">
           <svg class="w-6 h-6 text-red-600 mr-2" name="cross" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
-          Error saving: {errorMessage}
+          {errorMessage}
         </span>
       </div>
     {/if}

@@ -1,4 +1,5 @@
 import { getConfiguration } from './configuration'
+// import { debounce } from './util'
 
 export async function saveBookmark(bookmark) {
   const configuration = await getConfiguration()
@@ -18,9 +19,9 @@ export async function saveBookmark(bookmark) {
     //   throw new Error('Bookmark already exists')
   } else if (res.status === 400) {
     const body = await res.json()
-    throw new Error(`Validation error: ${JSON.stringify(body)}`)
+    throw new Error(`Validation ${JSON.stringify(body)}`)
   } else {
-    throw new Error(`Request error: ${res.statusText}`)
+    throw new Error(`Saving ${res.statusText}`)
   }
 }
 
@@ -42,7 +43,7 @@ export async function checkUrl(url) {
 export async function getTags() {
   const configuration = await getConfiguration()
 
-  const res = await fetch(`${configuration.baseUrl}/api/tags/?limit=10`, {
+  const res = await fetch(`${configuration.baseUrl}/api/tags?limit=10`, {
     headers: {
       Authorization: `${configuration.token}`,
     },
@@ -60,7 +61,7 @@ export async function search(text, options) {
   const q = encodeURIComponent(text)
   const limit = options.limit || 100
 
-  const res = await fetch(`${configuration.baseUrl}/api/bookmarks/?q=${q}&limit=${limit}`, {
+  const res = await fetch(`${configuration.baseUrl}/api/bookmarks?q=${q}&limit=${limit}`, {
     headers: {
       Authorization: `${configuration.token}`,
     },
@@ -73,7 +74,7 @@ export async function search(text, options) {
 }
 
 export async function testConnection(configuration) {
-  const res = await fetch(`${configuration.baseUrl}/api/bookmarks/?limit=1`, {
+  const res = await fetch(`${configuration.baseUrl}/api/bookmarks?limit=1`, {
     headers: {
       Authorization: `${configuration.token}`,
     },

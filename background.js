@@ -29,10 +29,10 @@ chrome.omnibox.onInputChanged.addListener((text, suggest) => {
           {
             offset: bookmark.title.length,
             type: 'dim',
-            length: bookmark.desc.length + 1,
+            length: bookmark.desc ? bookmark.desc.length + 1 : 0,
           },
           {
-            offset: bookmark.title.length + bookmark.desc.length + 2,
+            offset: bookmark.desc ? bookmark.title.length + bookmark.desc.length + 2 : 0,
             type: 'url',
             length: bookmark.url.length + 2,
           },
