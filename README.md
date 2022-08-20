@@ -3,7 +3,7 @@
 ![Chrome Web Store](https://img.shields.io/chrome-web-store/rating/aighkhofochfjejmhjfkgjfpkpgmjlnd?style=flat-square)
 ![GitHub](https://img.shields.io/github/license/ndom91/briefkasten-extension?style=flat-square)
 ![GitHub issues](https://img.shields.io/github/issues/ndom91/briefkasten-extension?style=flat-square)
-[![Demo](https://img.shields.io/badge/demo-instance-green?style=flat-square)](https://briefkasten.vercel.app)
+[![Demo](https://img.shields.io/badge/demo-instance-green?style=flat-square)](https://briefkastenhq.com)
 
 > Forked from [`sissbruecker/linkding-extension`](https://github.com/sissbruecker/linkding-extension)
 
@@ -52,8 +52,8 @@ After the build is complete, the repository directory will contain the unpackage
 
 After installing the extension for the first time, you will be greeted with the options pop-up asking you to enter the _Base Url_ and an _API Token_.
 
-1. The Base URL will be `https://briefkasten.vercel.app` if using the demo version of the application. Otherwise, use your own domain.
-2. The API Token can be found at the top of the [Settings](https://briefkasten.vercel.app/settings) page after logging in.
+1. The Base URL will be `https://briefkastenhq.com` if using the demo version of the application. Otherwise, use your own domain.
+2. The API Token can be found at the top of the [Settings](https://briefkastenhq.com/settings) page after logging in.
 
 ## 📝 License
 
