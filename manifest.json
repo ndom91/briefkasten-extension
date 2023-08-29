@@ -48,5 +48,10 @@
   },
 
   "permissions": ["storage", "background"],
-  "host_permissions": ["http://*/*", "https://*/*"]
+  "host_permissions": ["http://*/*", "https://*/*"],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "extension@briefkastenhq.com"
+    }
+  }
 }

@@ -18,6 +18,7 @@
   "homepage": "https://github.com/ndom91/briefkasten-extension#readme",
   "scripts": {
     "build": "rollup -c",
+    "build-ff": "rollup -c --firefox",
     "dev": "rollup -c -w"
   },
   "dependencies": {
